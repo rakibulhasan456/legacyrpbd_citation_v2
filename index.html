@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Police Citation Portal</title>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="container">
+
+  <!-- LOGIN -->
+  <div id="authBox">
+    <h2>Officer Login</h2>
+    <input type="text" id="licenseId" placeholder="License ID">
+    <input type="password" id="password" placeholder="Password">
+    <button onclick="login()">Login</button>
+    <button onclick="showRegister()">Register</button>
+    <p id="loginError"></p>
+  </div>
+
+  <!-- REGISTER -->
+  <div id="registerBox" style="display:none;">
+    <h2>Register</h2>
+    <input type="text" id="regLicenseId" placeholder="License ID">
+    <input type="password" id="regPassword" placeholder="Password">
+    <button onclick="register()">Create Account</button>
+    <button onclick="showLogin()">Back</button>
+    <p id="registerError"></p>
+  </div>
+
+  <!-- DASHBOARD -->
+  <div id="dashboard" style="display:none;">
+    <h2>Admin Dashboard</h2>
+    <input type="text" id="newLicense" placeholder="New License ID">
+    <input type="text" id="newName" placeholder="Officer Name">
+    <select id="newRole">
+      <option value="officer">Officer</option>
+      <option value="admin">Admin</option>
+    </select>
+    <button onclick="addOfficer()">Add Officer</button>
+    <button onclick="logout()">Logout</button>
+  </div>
+
+  <!-- CITATION -->
+  <form id="citationForm" style="display:none;">
+    <h2>Police Citation</h2>
+
+    <input type="text" id="title" placeholder="Title" required>
+    <input type="text" id="suspectName" placeholder="Suspect Name" required>
+    <input type="text" id="cid" placeholder="CID" required>
+    <input type="text" id="contact" placeholder="Contact" required>
+    <textarea id="report" placeholder="Report"></textarea>
+
+    <input type="text" id="officerName" readonly>
+
+    <button type="submit">Submit Citation</button>
+  </form>
+
+</div>
+
+<!-- Supabase CDN -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
